@@ -18,13 +18,26 @@
       <a class="brand" href="#home" aria-label="panorapics home">
         <span>Panorapics.id</span>
       </a>
-      <div class="nav-links">
-        <a href="#profile">Profile</a>
-        <a href="#portfolio">Porto</a>
-        <a href="#pricing">Pricelist</a>
-        <a href="#simulasi">Simulasi</a>
-        <button class="theme-btn" type="button" data-theme-toggle aria-label="Switch theme">Dark</button>
-      </div>
+       <button
+      class="menu-toggle"
+      type="button"
+      id="menuToggle"
+      aria-label="Buka menu navigasi"
+      aria-expanded="false"
+      aria-controls="mobileNav"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-links" id="mobileNav">
+      <button class="menu-close" type="button" id="menuClose" aria-label="Tutup menu">✕</button>
+      <a href="#profile">Profile</a>
+      <a href="#portfolio">Porto</a>
+      <a href="#pricing">Pricelist</a>
+      <a href="#simulasi">Simulasi</a>
+      <button class="theme-btn" type="button" data-theme-toggle aria-label="Switch theme">Dark</button>
     </div>
   </div>
 
@@ -43,7 +56,7 @@
           </div>
         </div>
         <div class="hero-card">
-          <img src="logo pano.png" alt="Visual hero fotografi panorapics" width="900" height="1100" loading="eager" />
+          <img src="logo pano.png" width="800" height="800" loading="eager" />
         </div>
       </div>
     </header>
@@ -66,7 +79,7 @@
             <ul class="service-list" role="list">
               <li>Engagement, Wedding & Prewedding Story.</li>
               <li>Graduation Session.</li>
-              <li>Corporate & Personal Event Documentation Video.</li>
+              <li>Corporate, Event Documentation Video.</li>
               <li>Birthday Party.</li>
             </ul>
           </div>
@@ -96,7 +109,7 @@
           </article>
           <article class="portfolio-item" data-gallery="product">
             <img src="e1.jpg" alt="Portfolio product" width="900" height="700" loading="lazy" />
-            <div class="portfolio-copy"><strong>Corporate & Personal Event Documentation Video.</strong><p>Dokumentasi profesional untuk personal event, aktivitas perusahaan, dan publikasi yang memperkuat citra brand.</p></div>
+            <div class="portfolio-copy"><strong>Corporate & Personal Event Documentation Video.</strong><p>Dokumentasi profesional untuk event personal, aktivitas perusahaan, dan publikasi yang memperkuat citra brand.</p></div>
           </article>
         </div>
       </div>
@@ -118,7 +131,7 @@
             <div class="price">Rp.400.000</div>
             <ul class="price-list" role="list"><li>1 fotografer</li><li>Durasi 60 menit</li><li>unlimited files edited photos</li></ul>
           </article>
-          <article class="price-card featured">
+          <article class="price-card">
             <div class="section-tag">Photo Only Mid Time</div>
             <div class="price">Rp.750.000</div>
            <ul class="price-list" role="list"><li>1 Fotografer</li><li>Durasi 2-3 jam</li><li>unlimited files edited photos</li></ul>
@@ -138,7 +151,7 @@
         <h2>ALL IN PACKAGE</h2>
         <div class="pricing-grid">
          
-          <article class="price-card featured">
+          <article class="price-card">
             <div class="section-tag">All In PKG Short Time</div>
             <div class="price">Rp.700.000</div>
             <ul class="price-list" role="list"><li>1 Fotografer dan 1 Videographer</li><li>Durasi 60 menit</li><li>Unlimited edited photos & cinematic video 1-5 min</li></ul>
