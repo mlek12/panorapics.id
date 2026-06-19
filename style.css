@@ -24,7 +24,9 @@
   --font-body: 'Work Sans', Arial, sans-serif;
   --transition: 180ms cubic-bezier(.16,1,.3,1);
 }
-
+:root {
+  --nav-height: 76px;
+}
 :root[data-theme='light'] {
   --color-bg: #f7f6f2;
   --color-surface: #f9f8f5;
@@ -65,17 +67,19 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
+  min-height: 100dvh;
   font-family: var(--font-body);
   font-size: var(--text-base);
   color: var(--color-text);
   background: radial-gradient(circle at top right, rgba(79,152,163,.10), transparent 24%),
               radial-gradient(circle at bottom left, rgba(232,175,52,.09), transparent 24%),
               var(--color-bg);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 img { 
   display:block; 
   max-width:100%; 
-  height:40vh; 
 }
 a { 
   color: inherit; 
@@ -98,11 +102,14 @@ a {
   z-index:2000; 
 }
 .nav-wrap { 
-  position:sticky; 
-  top:0; z-index:1000; 
-  backdrop-filter:blur(14px); 
-  background: color-mix(in srgb, var(--color-bg) 76%, transparent); 
-  border-bottom:1px solid var(--color-border); 
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--color-bg) 76%, transparent);
+  border-bottom: 1px solid var(--color-border);
 }
 .nav { 
   display:flex; 
@@ -142,6 +149,9 @@ a {
   border:1px solid var(--color-border); 
   background:var(--color-surface); 
   color:var(--color-text); 
+}
+main {
+  padding-top: 1px;
 }
 .hero { 
   padding: clamp(2rem, 5vw, 4rem) 0 clamp(2.5rem, 6vw, 4rem);
@@ -184,9 +194,7 @@ p {
   padding:var(--space-4); 
 }
 .hero-card img { 
-  aspect-ratio:4/5; 
-  object-fit:cover; 
-  border-radius:calc(var(--radius-xl) - var(--space-4)); 
+  height: 40vh;
 }
 .actions { 
   display:flex; 
@@ -367,23 +375,7 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   border:1px solid var(--color-border); 
   background:var(--color-surface); 
 }
-.wa-float { 
-  position:fixed; 
-  right:1rem; 
-  bottom:1rem; 
-  z-index:900; 
-}
-.wa-float a { 
-  display:inline-flex; 
-  align-items:center; 
-  justify-content:center; 
-  width:56px; 
-  height:56px; 
-  border-radius:50%; 
-  background:#ffffff; 
-  color:rgb(243, 4, 4); 
-  box-shadow:var(--shadow); 
-}
+
 dialog { 
   width:min(560px, calc(100% - 1.5rem)); 
   border:1px solid var(--color-border); 
@@ -448,9 +440,7 @@ dialog::backdrop {
 @media (max-width:960px){ 
   .hero-grid, .profile-grid, .sim-layout, .pricing-grid { grid-template-columns:1fr; } .portfolio-item { grid-column:span 6; } 
 }
-@media (max-width:680px){ 
-.nav { padding:.75rem 0; align-items:start; flex-direction:column; } .nav-links { width:100%; justify-content:space-between; gap:.75rem; } .portfolio-grid { grid-template-columns:1fr; } .portfolio-item { grid-column:auto; } .portfolio-item img { height:240px; } .section-head, .footer-box { flex-direction:column; } .actions, .modal-actions { flex-direction:column; } .btn, .btn-outline, .theme-btn { width:100%; } .gallery-grid { grid-template-columns:1fr 1fr; } 
-}
+
 @media (max-width:520px){ 
   .gallery-grid { grid-template-columns:1fr; } 
 }
@@ -477,34 +467,63 @@ dialog::backdrop {
 }
 
 @media (max-width: 768px) {
+  .gallery-grid{
+    grid-template-columns:1fr 1fr;
+  }
+  .portfolio-grid{
+    grid-template-columns:1fr;
+  }
+  .portfolio-item{
+    grid-column:auto;
+  }
+  .portfolio-item img{
+    height:240px;
+  }
+  .section-head,
+  .footer-box{
+    flex-direction:column;
+  }
+  .actions,
+  .modal-actions{
+    flex-direction:column;
+  }
+  .container {
+    width: calc(100% - 2.5rem); /* kiri kanan 20px */
+    margin-inline: auto;
+  }
+  .brand {
+    margin-right: auto;
+  }
   .nav {
     display: flex;
+    flex-direction: row;      /* Tetap sejajar */
+    padding: 10px;
     align-items: center;
+    justify-content: space-between;
+    min-height: 70px;
+    width: 100%;
   }
-
   .menu-toggle {
     display: inline-flex;
     margin-left: auto;
     cursor: pointer;
   }
-
   /* --- PERBAIKAN DI SINI --- */
   .nav-links {
     display: none; /* Sembunyikan total dari layout agar tidak memicu overflow */
     position: fixed;
     right: 0;      /* Langsung set di kanan layar */
-    top: -20px;        /* Sesuaikan ke 0 agar rapi di atas */
+    top: -50px;        /* Sesuaikan ke 0 agar rapi di atas */
     width: min(88vw, 200px);
     height: 50vh;
     background: var(--color-surface, #111);
     flex-direction: column;
     align-items: flex-start;
-    gap: 19px;
-    padding: 64px 20px 20px;
+    gap: 50px;
+    padding: 64px 10px 10px;
     z-index: 1000;
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
     border-radius: 20px 0 0 20px;
-    
     /* Animasi fade in & slide halus */
     opacity: 0;
     transform: translateX(20px);
@@ -640,8 +659,4 @@ button,
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 16px 28px rgba(0, 0, 0, 0.2);
 }
-.wa-float a img {
-  width: auto;
-  height: auto;
-  object-fit: contain;
-}
+
