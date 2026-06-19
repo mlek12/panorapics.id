@@ -141,13 +141,13 @@ const mobileNav = document.getElementById("mobileNav");
 function openMenu() {
   mobileNav.classList.add("is-open");
   menuToggle.setAttribute("aria-expanded", "true");
-  document.body.style.overflow = "hidden";
+
 }
 
 function closeMenu() {
   mobileNav.classList.remove("is-open");
   menuToggle.setAttribute("aria-expanded", "false");
-  document.body.style.overflow = "";
+
 }
 
 if (menuToggle && menuClose && mobileNav) {
@@ -167,3 +167,4 @@ if (menuToggle && menuClose && mobileNav) {
     }
   });
 }
+
