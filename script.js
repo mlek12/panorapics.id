@@ -1,9 +1,9 @@
 const themeBtn = document.querySelector('[data-theme-toggle]');
 const root = document.documentElement;
 
-let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+let theme = 'dark';
 root.setAttribute('data-theme', theme);
-themeBtn.textContent = theme === 'dark' ? 'Light' : 'Dark';
+themeBtn.textContent = 'Light';
 
 themeBtn.addEventListener('click', () => {
   theme = theme === 'dark' ? 'light' : 'dark';
