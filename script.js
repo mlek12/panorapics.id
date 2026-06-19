@@ -134,3 +134,36 @@ galleryModal.addEventListener('click', e => {
   const inside = rect.top <= e.clientY && e.clientY <= rect.top + rect.height && rect.left <= e.clientX && e.clientX <= rect.left + rect.width;
   if (!inside) galleryModal.close();
 });
+const menuToggle = document.getElementById("menuToggle");
+const menuClose = document.getElementById("menuClose");
+const mobileNav = document.getElementById("mobileNav");
+
+function openMenu() {
+  mobileNav.classList.add("is-open");
+  menuToggle.setAttribute("aria-expanded", "true");
+  document.body.style.overflow = "hidden";
+}
+
+function closeMenu() {
+  mobileNav.classList.remove("is-open");
+  menuToggle.setAttribute("aria-expanded", "false");
+  document.body.style.overflow = "";
+}
+
+if (menuToggle && menuClose && mobileNav) {
+  menuToggle.addEventListener("click", openMenu);
+  menuClose.addEventListener("click", closeMenu);
+
+  document.querySelectorAll(".nav-links a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("click", function (e) {
+    const clickedInsideNav = mobileNav.contains(e.target);
+    const clickedToggle = menuToggle.contains(e.target);
+
+    if (mobileNav.classList.contains("is-open") && !clickedInsideNav && !clickedToggle) {
+      closeMenu();
+    }
+  });
+}
