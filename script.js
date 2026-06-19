@@ -38,7 +38,7 @@ const galleryData = {
     ]
   },
   corporate: {
-    title: 'Corporate Event',
+    title: 'Graduation',
     images: [
       'grad2.jpg',
       'grad3.jpg',
@@ -49,7 +49,7 @@ const galleryData = {
     ]
   },
   product: {
-    title: 'Product Shoot',
+    title: 'Corporate & Personal Event',
     images: [
       'e2.jpg',
       'e3.jpg',
