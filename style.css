@@ -1,649 +1,307 @@
-:root {
-  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-  --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-  --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-  --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 2rem;
-  --space-16: 4rem;
-  --radius-sm: 0.5rem;
-  --radius-md: 0.8rem;
-  --radius-lg: 1.2rem;
-  --radius-xl: 1.6rem;
-  --radius-full: 999px;
-  --font-display: 'Instrument Serif', Georgia, serif;
-  --font-body: 'Work Sans', Arial, sans-serif;
-  --transition: 180ms cubic-bezier(.16,1,.3,1);
-}
-:root {
-  --nav-height: 76px;
-}
-:root[data-theme='light'] {
-  --color-bg: #f7f6f2;
-  --color-surface: #f9f8f5;
-  --color-surface-2: #ffffff;
-  --color-border: rgba(40,37,29,.12);
-  --color-text: #28251d;
-  --color-text-muted: #6d6a63;
-  --color-primary: #01696f;
-  --color-primary-2: #d9ece9;
-  --color-accent: #d19900;
-  --shadow: 0 10px 30px rgba(26,22,18,.08);
-}
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>panorapics.id</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-:root[data-theme='dark'] {
-  --color-bg: #151412;
-  --color-surface: #1d1c1a;
-  --color-surface-2: #23211f;
-  --color-border: rgba(255,255,255,.09);
-  --color-text: #ece7de;
-  --color-text-muted: #b4aea5;
-  --color-primary: #4f98a3;
-  --color-primary-2: rgba(79,152,163,.12);
-  --color-accent: #e8af34;
-  --shadow: 0 12px 32px rgba(0,0,0,.32);
-}
+  <div class="nav-wrap">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="panorapics home">
+        <img src="logo pano.png" alt="">
+      </a>
+       <button
+      class="menu-toggle"
+      type="button"
+      id="menuToggle"
+      aria-label="Buka menu navigasi"
+      aria-expanded="false"
+      aria-controls="mobileNav"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-:root[data-theme='dark'] .menu-toggle,
-:root[data-theme='dark'] .menu-close {
-  color: #ffffff;
-}
+    <div class="nav-links" id="mobileNav">
+      <button class="menu-close" type="button" id="menuClose" aria-label="Tutup menu">✕</button>
+      <a href="#profile">Profile</a>
+      <a href="#portfolio">Porto</a>
+      <a href="#pricing">Pricelist</a>
+      <a href="#simulasi">Simulasi</a>
+      <button class="theme-btn" type="button" data-theme-toggle aria-label="Switch theme">Dark</button>
+    </div>
+  </div>
 
-:root[data-theme='light'] .menu-toggle,
-:root[data-theme='light'] .menu-close {
-  color: #111111;
-}
+  <main id="main">
+    <header class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Photography • Videography • Visual Storytelling</div>
+          <h1></h1>
+          <h1>Capturing your happy moment in one click</h1>
+          <p>Setiap proyek memiliki cerita yang berbeda. Berikut beberapa karya pilihan yang merepresentasikan 
+            gaya visual dan pendekatan Panorapics.id dalam mengabadikan setiap momen.</p>
+          <div class="actions">
+            <a class="btn" href="#simulasi">SIMULASI HARGA DAN BOOKING</a>
+            <a class="btn-outline" href="#portfolio">Lihat Portfolio</a>
+          </div>
+        </div>
+      
+      </div>
+    </header>
 
-*{ box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  min-height: 100dvh;
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  color: var(--color-text);
-  background: radial-gradient(circle at top right, rgba(79,152,163,.10), transparent 24%),
-              radial-gradient(circle at bottom left, rgba(232,175,52,.09), transparent 24%),
-              var(--color-bg);
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-img { 
-  display:block; 
-  max-width:100%; 
-}
-a { 
-  color: inherit; 
-  text-decoration:none; 
-}
-.container { 
-  width:min(1120px, calc(100% - 2rem)); 
-  margin-inline:auto; 
-}
-.skip-link { 
-  position:absolute; 
-  left:-9999px; 
-}
-.skip-link:focus { 
-  left:1rem; 
-  top:1rem; 
-  background:var(--color-surface-2); 
-  padding:.75rem 1rem; 
-  border-radius:var(--radius-md); 
-  z-index:2000; 
-}
-.nav-wrap { 
-  width: 100%;
-  z-index: 999;
-  backdrop-filter: blur(14px);
-  background: color-mix(in srgb, var(--color-bg) 76%, transparent);
-  border-bottom: 1px solid var(--color-border);
-}
-.nav { 
-  display:flex; 
-  align-items:center; 
-  justify-content:space-between; 
-  gap:var(--space-4); 
-  min-height:76px; 
-}
-.brand { 
-  display:flex; 
-  align-items:center; 
-  width:200px; 
-  height:110px; }
-.nav-links { 
-  display:flex; 
-  gap:var(--space-5); 
-  align-items:center; 
-  flex-wrap:wrap; 
-}
-.nav-links a { 
-  font-size:var(--text-sm); 
-  color:var(--color-text-muted); 
-}
-.nav-links a:hover, .nav-links a:focus-visible { 
-  color:var(--color-text); 
-}
-.theme-btn, .btn, .btn-outline { 
-  min-height:44px; 
-  border-radius:var(--radius-full); 
-  padding:.85rem 1.2rem; 
-  transition:all var(--transition); 
-}
-.theme-btn { 
-  border:1px solid var(--color-border); 
-  background:var(--color-surface); 
-  color:var(--color-text); 
-}
-main {
-  padding-top: 1px;
-}
-.hero { 
-  padding: clamp(2rem, 5vw, 4rem) 0 clamp(2.5rem, 6vw, 4rem);
-}
-.hero-grid { 
-  display:grid; 
-  grid-template-columns:1.15fr .85fr; 
-  gap:var(--space-8); 
-  align-items:center; 
-}
-.eyebrow, .section-tag { 
-  font-size:var(--text-xs); 
-  text-transform:uppercase; 
-  letter-spacing:.14em; 
-  color:var(--color-accent); 
-}
-h1, h2, h3 { 
-  font-family:var(--font-display); 
-  line-height:1.03; 
-  margin:0 0 var(--space-4); 
-}
-h1 { 
-  font-size:var(--text-2xl); 
-  max-width:11ch; 
-}
-h2 { 
-  font-size:var(--text-xl); 
-}
-p { 
-  color:var(--color-text-muted); 
-  max-width:64ch; 
-}
-.hero-card, .section-card, .price-card, .sim-card, .faq-item, .contact-box { 
-  background:var(--color-surface); 
-  border:1px solid var(--color-border); 
-  border-radius:var(--radius-xl); 
-  box-shadow:var(--shadow); 
-}
-.hero-card { 
-  padding:var(--space-4); 
-}
-.hero-card img { 
-  height: 40vh;
-}
-.actions { 
-  display:flex; 
-  gap:var(--space-4); 
-  flex-wrap:wrap; 
-  margin-top:var(--space-6); 
-}
-.btn { 
-  display:inline-flex; 
-  align-items:center; 
-  justify-content:center; 
-  background:var(--color-primary);
-  color:#fff; 
-  border:1px solid transparent; 
-  font-weight:600; 
-}
-.btn-outline { 
-  display:inline-flex; 
-  align-items:center; 
-  justify-content:center; 
-  border:1px solid var(--color-border); 
-  background:transparent; 
-  color:var(--color-text); 
-}
-section { 
-  padding:clamp(3rem, 7vw, 5rem) 0; 
-}
-.section-head { 
-  display:flex; 
-  justify-content:space-between; 
-  align-items:end; 
-  gap:var(--space-4); 
-  margin-bottom:var(--space-6); 
-}
-.profile-grid, .sim-layout { 
-  display:grid; 
-  grid-template-columns:.95fr 1.05fr; 
-  gap:var(--space-6); 
-}
-.section-card { 
-  padding:var(--space-6); 
-}
-.service-list { 
-  display:grid; 
-  gap:var(--space-3); 
-  padding:0; list-style:none; 
-}
-.service-list li { 
-  padding:var(--space-4); 
-  border:1px solid var(--color-border); 
-  border-radius:var(--radius-lg); 
-  background:var(--color-surface-2); 
-}
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: var(--space-2);
-  align-items: stretch;
-}
+    <section id="profile">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-tag">Profile</div>
+            <h2>Tentang panorapics.id</h2>
+          </div>
+         
+        </div>
+        <div class="profile-grid">
+          <div class="section-card">
+            <p>Didirikan dan mulai beroperasi secara serius pada tahun 2023, Panorapics.id tumbuh dengan visi 
+              menghadirkan dokumentasi yang lebih dari sekadar foto dan video. Setiap proyek kami kerjakan dengan perhatian terhadap detail, emosi, dan estetika sehingga menghasilkan visual yang autentik serta mudah dikenang. Kami percaya bahwa setiap cerita memiliki sudut pandang yang unik, dan tugas kami adalah mengabadikannya dalam satu frame yang bermakna.</p>
+          </div>
+          <div class="section-card">
+            <ul class="service-list" role="list">
+              <li>Engagement, Wedding & Prewedding Story.</li>
+              <li>Graduation Session.</li>
+              <li>Corporate, Event Documentation Video.</li>
+              <li>Birthday Party.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-.portfolio-item {
-  grid-column: span 4;
-  overflow: hidden;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-}
+    <section id="portfolio">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-tag">Porto</div>
+            <h2>Portfolio pilihan</h2>
+          </div>
+          <p>Klik salah satu portfolio untuk membuka galeri foto.</p>
+        </div>
 
-.portfolio-item.tall {
-  grid-row: span 2;
-}
+        <div class="portfolio-grid">
+          <article class="portfolio-item tall" data-gallery="wedding">
+            <img src="wedding1.jpg" alt="Portfolio wedding" width="900" height="700" loading="lazy" />
+            <div class="portfolio-copy"><strong>Engagement, Wedding & Prewedding Story</strong>
+              <p>Dokumentasi momen utama dengan tone hangat dan sinematik.</p></div>
+          </article>
+          <article class="portfolio-item" data-gallery="corporate">
+            <img src="grad1.jpg" alt="Portfolio corporate" width="900" height="700" loading="lazy" />
+            <div class="portfolio-copy"><strong>Graduation Session</strong><p>Mengabadikan pencapaian terbaik dalam potret yang personal, elegan, dan penuh kebanggaan.</p></div>
+          </article>
+          <article class="portfolio-item" data-gallery="product">
+            <img src="e1.jpg" alt="Portfolio product" width="900" height="700" loading="lazy" />
+            <div class="portfolio-copy"><strong>Corporate & Personal Event Documentation Video.</strong><p>Dokumentasi profesional untuk event personal, aktivitas perusahaan, dan publikasi yang memperkuat citra brand.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-.portfolio-item img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  display: block;
-}
+    <section id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-tag">Pricelist</div>
+               <h2></h2>
+            <h2>Paket layanan</h2>
+          </div>
+        </div>
+        <h2>PHOTO ONLY</h2>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <div class="section-tag">Photo Only Short Time</div>
+            <div class="price">Rp.400.000</div>
+            <ul class="price-list" role="list"><li>1 fotografer</li><li>Durasi 60 menit</li><li>unlimited files edited photos</li></ul>
+          </article>
+          <article class="price-card">
+            <div class="section-tag">Photo Only Mid Time</div>
+            <div class="price">Rp.750.000</div>
+           <ul class="price-list" role="list"><li>1 Fotografer</li><li>Durasi 2-3 jam</li><li>unlimited files edited photos</li></ul>
+          </article>
+          <article class="price-card">
+            <div class="section-tag">Photo Only Half Time</div>
+            <div class="price">Rp.1.300.000</div>
+            <ul class="price-list" role="list"><li>1 Fotografer</li><li>Durasi 4-6 jam</li><li>unlimited files edited photos</li></ul>
+          </article>
+           <article class="price-card">
+            <div class="section-tag">Photo Only Full Time</div>
+            <div class="price">Rp.1.950.000</div>
+            <ul class="price-list" role="list"><li>2 Fotografer</li><li>Durasi 8-11 jam</li><li>unlimited files edited photos</li></ul>
+          </article>
+        </div>
+        <h2></h2>
+        <h2>ALL IN PACKAGE</h2>
+        <div class="pricing-grid">
+         
+          <article class="price-card">
+            <div class="section-tag">All In PKG Short Time</div>
+            <div class="price">Rp.700.000</div>
+            <ul class="price-list" role="list"><li>1 Fotografer dan 1 Videographer</li><li>Durasi 60 menit</li><li>Unlimited edited photos & cinematic video 1-5 min</li></ul>
+          </article>
+          <article class="price-card">
+            <div class="section-tag">All In PKG Mid Time</div>
+            <div class="price">Rp.1.300.000</div>
+            <ul class="price-list" role="list"><li>1 Fotografer dan 1 Videographer</li><li>Durasi 2-3 jam</li><li>Unlimited edited photos & cinematic video 1-5 min</li></ul>
+          </article>
+          <article class="price-card">
+            <div class="section-tag">All In PKG Half Time</div>
+            <div class="price">Rp.2.200.000</div>
+            <ul class="price-list" role="list"><li>1 Fotografer dan 1 Videographer</li><li>Durasi 4-6 jam</li><li>Unlimited edited photos & cinematic video 1-5 min</li></ul>
+          </article>
+          <article class="price-card">
+            <div class="section-tag">All In PKG Full Time</div>
+            <div class="price">Rp.3.400.000</div>
+            <ul class="price-list" role="list"><li>2 Fotografer dan 1 Videographer</li><li>Durasi 8-11 jam</li><li>Unlimited edited photos & cinematic video 1-5 min</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
 
-.portfolio-copy {
-  padding: var(--space-4);
-  flex: 1;
-}
+    <section id="simulasi">
+      <div class="container sim-layout">
+        <div class="sim-card">
+          <div class="section-tag">Simulasi Harga</div>
+          <h2>Hitung total dan DP</h2>
+          <p>Pembayaran DP dihitung dari persentase paket yang dipilih. Setelah submit, akan muncul pop up untuk lanjut ke WhatsApp Business.</p>
+          <form id="simForm" class="form-grid">
+            <div class="field">
+              <label for="nama">Nama</label>
+              <input id="nama" name="nama" type="text" placeholder="Nama lengkap" required />
+            </div>
+            <div class="field">
+              <label for="layanan">Pilih paket</label>
+              <select id="layanan" name="layanan" required>
+                <option value="400000">Photo Only Short Time - Rp.400.000</option>
+                <option value="750000" selected>Photo Only Mid Time - Rp.750.000</option>
+                <option value="1300000">Photo Only Half Time - Rp.1.300.000</option>
+                <option value="1950000">Photo Only Full Time - Rp1.950.000</option>
+                <option value="700000" selected>PKG All-in Short Time - Rp.700.000</option>
+                <option value="1300000">PKG All-in Mid Time - Rp.1.300.000</option>
+                <option value="2200000">PKG All-in Half Time - Rp.2.200.000</option>
+                <option value="3400000" selected>PKG All-in Full Time - Rp.3.400.000</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="dp">DP</label>
+              <select id="dp" name="dp" required>
+                <option value="20">20%</option>
+                <option value="30" selected>30%</option>
+                <option value="50">50%</option>
+                <option value="100">100%</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="tanggal">Tanggal acara</label>
+              <input id="tanggal" name="tanggal" type="date" required />
+            </div>
+            <button class="btn" type="submit">Submit & Buka WhatsApp</button>
+          </form>
+        </div>
 
-.portfolio-copy p {
-  min-height: 3.2em;
-}
-.pricing-grid { 
-  display:grid; 
-  grid-template-columns:repeat(4, 1fr); 
-  gap:var(--space-4); 
-}
-.price-card { 
-  padding:var(--space-6); 
-  position:relative; 
-}
-.price-card.featured { 
-  outline:1px solid color-mix(in srgb, var(--color-primary) 40%, transparent); 
-  background:linear-gradient(180deg, color-mix(in srgb, var(--color-primary-2) 80%, var(--color-surface)), var(--color-surface)); 
-}
-.price { 
-  font-size:var(--text-xl); 
-  font-family:var(--font-display); 
-  color:var(--color-text); 
-  margin-bottom:var(--space-4); 
-}
-.price-list { 
-  list-style:none; 
-  padding:0; 
-  display:grid; 
-  gap:var(--space-3); 
-  margin:var(--space-5) 0 0;
-}
-.price-list li { 
-  color:var(--color-text-muted); 
-}
-.sim-card { 
-  padding:var(--space-6); 
-}
-.form-grid { 
-  display:grid; 
-  gap:var(--space-4); 
-}
-.field { 
-  display:grid; gap:.5rem; 
-}
-label { 
-  font-size:var(--text-sm); 
-  color:var(--color-text); 
-  font-weight:600; 
-}
-input, select { 
-  width:100%; min-height:48px; 
-  border-radius:var(--radius-md); 
-  border:1px solid var(--color-border); 
-  padding:.9rem 1rem; 
-  background:var(--color-surface-2); 
-  color:var(--color-text); 
-}
-input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible { 
-  outline:2px solid var(--color-primary); 
-  outline-offset:3px; 
-}
-.summary { 
-  display:grid; 
-  gap:var(--space-4); 
-}
-.summary-row { 
-  display:flex; 
-  justify-content:space-between; 
-  gap:var(--space-4); 
-  padding-bottom:var(--space-3); 
-  border-bottom:1px dashed var(--color-border); 
-}
-.summary strong { 
-  font-size:var(--text-lg); 
-}
-.faq-list { 
-  display:grid; 
-  gap:var(--space-4); 
-}
-.faq-item { 
-  padding:var(--space-5); 
-}
-.footer { 
-  padding:0 0 2rem; 
-}
-.footer-box { 
-  display:flex; 
-  justify-content:space-between; 
-  gap:var(--space-4); 
-  flex-wrap:wrap; 
-  padding:var(--space-5); 
-  border-radius:var(--radius-xl); 
-  border:1px solid var(--color-border); 
-  background:var(--color-surface); 
-}
+        <aside class="sim-card" aria-live="polite">
+          <div class="section-tag">Ringkasan</div>
+          <div class="summary">
+            <div class="summary-row"><span>Paket</span><span id="sumPaket">Standard</span></div>
+            <div class="summary-row"><span>Total</span><span id="sumTotal">Rp3.000.000</span></div>
+            <div class="summary-row"><span>DP</span><span id="sumDpPercent">30%</span></div>
+            <div class="summary-row"><span>Nominal DP</span><strong id="sumDpNominal">Rp900.000</strong></div>
+            <div class="summary-row"><span>Sisa Pelunasan</span><span id="sumSisa">Rp2.100.000</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
 
-dialog { 
-  width:min(560px, calc(100% - 1.5rem)); 
-  border:1px solid var(--color-border); 
-  border-radius:var(--radius-xl); 
-  padding:0; 
-  background:var(--color-surface); 
-  color:var(--color-text); 
-  box-shadow:var(--shadow); 
-}
-dialog::backdrop { 
-  background:rgba(0,0,0,.45); 
-  backdrop-filter:blur(4px); 
-}
-.modal-body { 
-  padding:var(--space-6); 
-}
-.modal-actions { 
-  display:flex; 
-  gap:var(--space-3); 
-  flex-wrap:wrap; 
-  margin-top:var(--space-6); 
-}
-.muted { 
-  color:var(--color-text-muted); 
-}
-.gallery-modal { 
-  width: min(980px, calc(100% - 1.5rem));
-}
-.gallery-modal::backdrop { 
-  background: rgba(0,0,0,.55); 
-  backdrop-filter: blur(5px); 
-}
-.gallery-head { 
-  display:flex; 
-  justify-content:space-between; 
-  align-items:center; 
-  gap:1rem; 
-  padding:1.25rem 1.25rem 0.75rem;
-}
-.close-btn { 
-  width:44px; 
-  height:44px; 
-  border:1px solid var(--color-border); 
-  background:var(--color-surface-2); 
-  color:var(--color-text); 
-  border-radius:999px;
-  cursor:pointer; 
-  font-size:1.6rem; 
-  line-height:1; }
-.gallery-grid { 
-  display:grid; 
-  grid-template-columns:repeat(3, 1fr); 
-  gap:.75rem; 
-  padding:1.25rem; 
-}
-.gallery-grid img { 
-  width:100%; 
-  aspect-ratio:4/3; 
-  object-fit:cover; 
-  border-radius:1rem; 
-}
-@media (max-width:960px){ 
-  .hero-grid, .profile-grid, .sim-layout, .pricing-grid { grid-template-columns:1fr; } .portfolio-item { grid-column:span 6; } 
-}
+<section id="faq">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-tag">FAQ</div>
+        <h2>Pertanyaan yang sering ditanyakan</h2>
+      </div>
+    </div>
 
-@media (max-width:520px){ 
-  .gallery-grid { grid-template-columns:1fr; } 
-}
-@media(prefers-reduced-motion:reduce){ 
-  html{scroll-behavior:auto} *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important} 
-}
+    <div class="faq-list">
+      <div class="faq-item">
+        <strong>1. Bagaimana cara melakukan booking?</strong>
+        <p>Booking dapat dilakukan melalui WhatsApp dengan mengisi tanggal acara, lokasi, serta paket yang diinginkan. Tim kami akan mengonfirmasi ketersediaan jadwal.</p>
+      </div>
 
-.menu-toggle {
-  display: none;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--color-border, rgba(255,255,255,0.15));
-  background: transparent;
-  border-radius: 12px;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 4px;
-  cursor: pointer;
-  padding: 0;
-}
-.menu-close {
-  display: none;
-}
+      <div class="faq-item">
+        <strong>2. Apakah harus membayar DP?</strong>
+        <p>Ya. Untuk mengamankan jadwal diperlukan pembayaran DP sesuai kesepakatan. Booking akan dianggap aktif setelah DP diterima.</p>
+      </div>
 
-@media (max-width: 768px) {
-  .gallery-grid{
-    grid-template-columns:1fr 1fr;
-  }
-  .portfolio-grid{
-    grid-template-columns:1fr;
-  }
-  .portfolio-item{
-    grid-column:auto;
-  }
-  .portfolio-item img{
-    height:240px;
-  }
-  .section-head,
-  .footer-box{
-    flex-direction:column;
-  }
-  .actions,
-  .modal-actions{
-    flex-direction:column;
-  }
-  .container {
-    width: calc(100% - 2.5rem); /* kiri kanan 20px */
-    margin-inline: auto;
-  }
-  .brand {
-    margin-right: auto;
-  }
-  .nav {
-    display: flex;
-    flex-direction: row;      /* Tetap sejajar */
-    padding: 10px;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 70px;
-    width: 100%;
-  }
-  .menu-toggle {
-    display: inline-flex;
-    margin-left: auto;
-    cursor: pointer;
-  }
-  /* --- PERBAIKAN DI SINI --- */
-  .nav-links{
-    display:none;
-    position:fixed;
-    top: -10px;;
-    right:0;
-    width:min(88vw,180px);
-    height:50vh;
-    background:var(--color-surface);
-    flex-direction:column;
-    padding:20px;
-    gap:24px;
-    border-radius: 24px 0 0 24px;
-}
+      <div class="faq-item">
+        <strong>3. Kapan pelunasan dilakukan?</strong>
+        <p>Pelunasan dilakukan maksimal H+1 acara atau mengikuti kesepakatan yang telah dibuat bersama.</p>
+      </div>
 
-  /* Saat menu aktif/terbuka */
-  .nav-links.is-open {
-    display: flex; /* Munculkan kembali sebagai flexbox */
-    opacity: 1;
-    transform: translateX(0);
-  }
-  /* ------------------------- */
+      <div class="faq-item">
+        <strong>4. Kapan hasil foto dan video diterima?</strong>
+        <p>Estimasi pengerjaan foto adalah 3–7 hari kerja, sedangkan video highlight 3–10 hari kerja. Estimasi dapat menyesuaikan dengan jenis paket dan jumlah dokumentasi.</p>
+      </div>
 
-  .nav-links a,
-  .nav-links .theme-btn {
-    width: 100%;
-  }
+      <div class="faq-item">
+        <strong>5. Apakah melayani di luar kota?</strong>
+        <p>Ya. Panorapics.id melayani dokumentasi di berbagai kota. Biaya transportasi dan akomodasi akan disesuaikan dengan lokasi acara.</p>
+      </div>
 
-  .menu-close {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    align-self: flex-end;
-    top: 14px;
-    right: 14px;
-    width: 44px;
-    height: 44px;
-    border: 1px solid var(--color-border, rgba(255,255,255,0.15));
-    background: transparent;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 24px;
-    line-height: 1;
-  }
-}
-.menu-toggle span {
-  display: block;
-  width: 20px;
-  height: 2.5px;
-  border-radius: 999px;
-  background: currentColor;
-}
-a,
-button,
-.btn,
-.btn-outline,
-.theme-btn,
-.portfolio-item,
-.price-card,
-.section-card,
-.faq-item,
-.wa-float a,
-.menu-toggle,
-.menu-close {
-  transition:
-    transform 0.25s ease,
-    background-color 0.25s ease,
-    color 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    opacity 0.25s ease;
-}
+      <div class="faq-item">
+        <strong>6. Apakah bisa request konsep atau referensi?</strong>
+        <p>Tentu. Kami sangat terbuka dengan moodboard atau referensi dari klien agar hasil dokumentasi sesuai dengan gaya yang diinginkan.</p>
+      </div>
 
-.nav-links a {
-  position: relative;
-}
+      <div class="faq-item">
+        <strong>7. Bagaimana jika terjadi perubahan jadwal?</strong>
+        <p>Perubahan jadwal dapat dilakukan sesuai ketersediaan tim. Apabila tanggal baru tersedia, booking akan dipindahkan tanpa kehilangan DP.</p>
+      </div>
 
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 2px;
-  background: var(--color-primary);
-  transition: width 0.25s ease;
-}
+      <div class="faq-item">
+        <strong>8. Bagaimana cara melihat portofolio?</strong>
+        <p>Portofolio dapat dilihat langsung melalui halaman website atau media sosial Panorapics.id untuk melihat hasil dokumentasi terbaru.</p>
+      </div>
+    </div>
+  </div>
+</section>
+  <dialog id="waModal" aria-labelledby="waTitle">
+    <div class="modal-body">
+      <div class="section-tag">Lanjut Booking</div>
+      <h3 id="waTitle">Buka WhatsApp Business?</h3>
+      <p id="waSummary" class="muted"></p>
+      <div class="modal-actions">
+        <a id="waLink" class="btn" href="#" target="_blank" rel="noopener noreferrer">Ya, lanjut ke WhatsApp</a>
+        <button class="btn-outline" type="button" id="closeModal">Batal</button>
+      </div>
+    </div>
+  </dialog>
 
-.nav-links a:hover,
-.nav-links a:focus-visible {
-  color: var(--color-text);
-}
+  <dialog id="galleryModal" class="gallery-modal" aria-labelledby="galleryTitle">
+    <div class="gallery-head">
+      <div>
+        <div class="section-tag">Gallery</div>
+        <h3 id="galleryTitle">Portfolio</h3>
+      </div>
+      <button id="closeGallery" class="close-btn" type="button">×</button>
+    </div>
+    <div id="galleryGrid" class="gallery-grid"></div>
+  </dialog>
 
-.nav-links a:hover::after,
-.nav-links a:focus-visible::after {
-  width: 100%;
-}
-
-.btn:hover,
-.btn:focus-visible {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
-  filter: brightness(1.05);
-}
-
-.btn-outline:hover,
-.btn-outline:focus-visible,
-.theme-btn:hover,
-.theme-btn:focus-visible,
-.menu-toggle:hover,
-.menu-toggle:focus-visible,
-.menu-close:hover,
-.menu-close:focus-visible {
-  transform: translateY(-2px);
-  background: var(--color-surface-2);
-  border-color: var(--color-primary);
-}
-
-.price-card:hover,
-.faq-item:hover,
-.hero-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.16);
-  border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
-}
-
-.portfolio-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.16);
-  border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
-}
-
-.portfolio-item img {
-  transition: transform 0.35s ease;
-}
-
-.portfolio-item:hover img {
-  transform: scale(1.04);
-}
-.wa-float a:hover,
-.wa-float a:focus-visible {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.2);
-}
-
+  <script src="script.js"></script>
+</body>
+</html>
