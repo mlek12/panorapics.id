@@ -102,9 +102,6 @@ a {
   z-index:2000; 
 }
 .nav-wrap { 
-
-  top: 0;
-  left: 0;
   width: 100%;
   z-index: 999;
   backdrop-filter: blur(14px);
@@ -509,26 +506,19 @@ dialog::backdrop {
     cursor: pointer;
   }
   /* --- PERBAIKAN DI SINI --- */
-  .nav-links {
-    display: none; /* Sembunyikan total dari layout agar tidak memicu overflow */
-    position: fixed;
-    right: 0;      /* Langsung set di kanan layar */
-    top: -50px;        /* Sesuaikan ke 0 agar rapi di atas */
-    width: min(88vw, 200px);
-    height: 50vh;
-    background: var(--color-surface, #111);
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 50px;
-    padding: 64px 10px 10px;
-    z-index: 1000;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
-    border-radius: 20px 0 0 20px;
-    /* Animasi fade in & slide halus */
-    opacity: 0;
-    transform: translateX(20px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-  }
+  .nav-links{
+    display:none;
+    position:fixed;
+    top: -10px;;
+    right:0;
+    width:min(88vw,180px);
+    height:50vh;
+    background:var(--color-surface);
+    flex-direction:column;
+    padding:20px;
+    gap:24px;
+    border-radius: 24px 0 0 24px;
+}
 
   /* Saat menu aktif/terbuka */
   .nav-links.is-open {
