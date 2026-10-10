@@ -2,8 +2,9 @@ const themeBtn = document.querySelector('[data-theme-toggle]');
 const root = document.documentElement;
 
 let theme = 'dark';
+
 root.setAttribute('data-theme', theme);
-themeBtn.textContent = 'Light';
+themeBtn.textContent = theme === 'dark' ? 'Light' : 'Dark';
 
 themeBtn.addEventListener('click', () => {
   theme = theme === 'dark' ? 'light' : 'dark';
@@ -11,7 +12,16 @@ themeBtn.addEventListener('click', () => {
   themeBtn.textContent = theme === 'dark' ? 'Light' : 'Dark';
 });
 
-const packages = { 400000: 'Photo Only Short Time', 750000: 'Photo Only Midtime', 1300000: 'Photo Only Halftime', 1950000: 'Photo Only Fulltime',700000: 'PKG Shorttime', 1300000: 'PKG Midtime', 2200000: 'PKG Halftime', 3400000: 'PKG Fulltime' };
+const packages = {
+  450000: 'Photo Only Short Time',
+  900000: 'Photo Only Mid Time',
+  1500000: 'Photo Only Halfday',
+  2250000: 'Photo Only Fullday',
+  1000000: 'All-in Short Time',
+  1600000: 'All-in Mid Time',
+  2500000: 'All-in Halfday',
+  3700000: 'All-in Fullday'
+};
 const serviceSelect = document.getElementById('layanan');
 const dpSelect = document.getElementById('dp');
 const sumPaket = document.getElementById('sumPaket');
